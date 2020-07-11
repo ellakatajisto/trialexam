@@ -3,6 +3,10 @@ const express = require('express')
 
 const indexController = require('../controllers/indexController')
 const chatController = require('../controllers/chatController')
+
+// require todo controller
+const todoController = require('../controllers/todoController')
+
 const layouts = require('express-ejs-layouts')
 const path = require('path')
 const methodOverride = require('method-override')
@@ -53,5 +57,36 @@ router.use(express.json())
 
 router.get('/chat', chatController.chat)
 router.get('/', indexController.index)
+
+
+// Route for sample Data
+router.get("/todos_sample", indexController.showTodos);
+
+// Normal Routes for ToDos
+router.get("/todos", todoController.index, todoController.indexView);
+router.get("/new", todoController.new);
+router.post(
+    "/create",
+    todoController.create,
+    todoController.redirectView
+);
+router.get("/:id", todoController.show, todoController.showView);
+router.get("/:id/edit", todoController.edit);
+router.put(
+    "/:id/update",
+    todoController.update,
+    todoController.redirectView
+);
+
+router.delete(
+    "/:id/delete",
+    todoController.delete,
+    todoController.redirectView
+);
+
+router.post(
+    "/delete/Likes",    
+    todoController.redirectView
+);
 
 module.exports = router

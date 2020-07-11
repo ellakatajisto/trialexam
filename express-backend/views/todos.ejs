@@ -1,0 +1,10 @@
+// create a view with the hard coded sample data from indexController
+
+<h1>My ToDo's</h1>
+<% someTodos.forEach(todo => { %>
+<h5>
+    <%= todo.title %>
+</h5>
+<span>$
+    <%= todo.done %> </span>
+<% }); %>

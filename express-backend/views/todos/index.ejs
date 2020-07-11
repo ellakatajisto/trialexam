@@ -1,0 +1,25 @@
+All TodDo's from the database
+<form action="/delete/ToDos" method="post" onclick="return confirm('delete all ToDo?')" type="submit" name="type"
+    value="Delete All ToDos"></form>
+
+
+
+<% todos.forEach(todo => { %>
+<a href="<%= `/todos/${todo._id}` %>">
+    <%= todo.title %>
+
+</a>
+<%= todo.done %>
+
+<br>
+
+<a href="<%=`/todos/${todo._id}/edit`%>">
+    Edit
+</a>
+<br>
+<a href="<%= `todos/${todo._id}/delete?_method=DELETE` %>" onclick="return confirm('Delete this ToDo?')">Delete</a>
+
+<% }); %>
+<br>
+
+<a href="<%= `new/` %>">New ToDo</a>

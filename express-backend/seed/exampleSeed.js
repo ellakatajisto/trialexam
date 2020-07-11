@@ -1,6 +1,7 @@
 const {mongoURI} = require('../config')
 const mongoose = require('mongoose')
 const User = require('../models/user')
+const ToDo = require('../models/todo')
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const userData = []
@@ -28,6 +29,30 @@ User.deleteMany({})
     })
     .then(created => {
         console.log(created.length + ' users created')
+
+    })
+    .catch(error => {
+        console.log(error.message)
+        mongoose.connection.close()
+    })
+
+const todoData = []
+for (let i = 0; i < 20; i = i + 1) {
+    todoData.push(
+        {
+            title: faker.random.word(),             
+                    
+            
+        })
+}
+console.log('todoData ' + todoData.length)
+ToDo.deleteMany({})
+    .then(() => {
+        console.log('all todos deleted')
+        return ToDo.create(todoData)
+    })
+    .then(created => {
+        console.log(created.length + ' todos created')
 
     })
     .catch(error => {
