@@ -7,7 +7,7 @@ const mongoose = require("mongoose"),
     todoSchema = new Schema({
         title: {
             type: String,
-            required: true
+            default: "default title"
         },
         done: {
             type: Boolean,

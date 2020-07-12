@@ -5,7 +5,7 @@ const httpStatus = require("http-status-codes"),
 const ToDo = require("../models/todo"),
     getToDoParams = (body) => {
         return {
-            name: body.title,
+            title: body.title,
             done: body.done
         };
     };
@@ -95,7 +95,7 @@ module.exports = {
     },
     delete: (req, res, next) => {
         let todoId = req.params.id;
-        ToDo.findByIdAndRemove(todoId)
+        ToDo.findByIdAndRemove(todoId, {new: true, useFindAndModify: false})
             .then(() => {
                 res.locals.redirect = "/todos";
                 next();

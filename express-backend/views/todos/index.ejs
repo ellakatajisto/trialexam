@@ -7,19 +7,15 @@ All TodDo's from the database
 <% todos.forEach(todo => { %>
 <a href="<%= `/todos/${todo._id}` %>">
     <%= todo.title %>
-
 </a>
 <%= todo.done %>
 
-<br>
-
-<a href="<%=`/todos/${todo._id}/edit`%>">
+<a href="<%=`/todos/${todo._id}/update`%>">
     Edit
 </a>
 <br>
 <a href="<%= `todos/${todo._id}/delete?_method=DELETE` %>" onclick="return confirm('Delete this ToDo?')">Delete</a>
-
 <% }); %>
 <br>
-
-<a href="<%= `new/` %>">New ToDo</a>
+<br>
+<a href="<%= `new/` %>"> New task</a>

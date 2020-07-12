@@ -40,9 +40,8 @@ const todoData = []
 for (let i = 0; i < 20; i = i + 1) {
     todoData.push(
         {
-            title: faker.random.word(),             
-                    
-            
+            title: faker.random.word(),
+      
         })
 }
 console.log('todoData ' + todoData.length)

@@ -79,13 +79,13 @@ router.put(
 );
 
 router.delete(
-    "/:id/delete",
+    "/todos/:id/delete",
     todoController.delete,
     todoController.redirectView
 );
 
 router.post(
-    "/delete/Likes",    
+    "/delete/Likes",
     todoController.redirectView
 );
 
