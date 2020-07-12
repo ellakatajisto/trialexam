@@ -71,9 +71,9 @@ router.post(
     todoController.redirectView
 );
 router.get("/:id", todoController.show, todoController.showView);
-router.get("/:id/edit", todoController.edit);
+router.get("/todos/:id/edit", todoController.edit);
 router.put(
-    "/:id/update",
+    "/todos/:id/update",
     todoController.update,
     todoController.redirectView
 );

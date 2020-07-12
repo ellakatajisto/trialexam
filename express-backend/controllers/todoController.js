@@ -65,7 +65,7 @@ module.exports = {
     },
     edit: (req, res, next) => {
         var todoId = req.params.id;
-        ToDo.findById(todoId)
+        ToDo.findById(todoId, )
             .then((todo) => {
                 res.render("todos/edit", {
                     todo: todo,
@@ -79,11 +79,13 @@ module.exports = {
     update: (req, res, next) => {
         let todoId = req.params.id,
             todoParams = getToDoParams(req.body);
-        ToDo.findByIdAndUpdate(todoId, {
+        ToDo.findByIdAndUpdate(todoId,
+            {
                 $set: todoParams,
             })
             .then((todo) => {
-                res.locals.redirect = `/todos/${todoId}`;
+              //  res.locals.redirect = `/todos/${todoId}`;
+              res.locals.redirect = "/todos";
                 res.locals.todo = todo;
                 next();
             })
@@ -93,6 +95,7 @@ module.exports = {
                 next(error);
             });
     },
+
     delete: (req, res, next) => {
         let todoId = req.params.id;
         ToDo.findByIdAndRemove(todoId, {new: true, useFindAndModify: false})
